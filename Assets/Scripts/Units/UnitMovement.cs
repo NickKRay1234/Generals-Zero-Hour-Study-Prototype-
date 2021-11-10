@@ -10,15 +10,14 @@ public class UnitMovement : NetworkBehaviour
 
     #region Server
 
-    [Command]
+    [Command] // Client -> Server
     private void CmdMove(Vector3 position)
     {
         if(!NavMesh.SamplePosition(position, out NavMeshHit hit, 1f, NavMesh.AllAreas)) {return;}
         _agent.SetDestination(hit.position);
     }
-
-
     #endregion
+
 
     #region Client
     public override void OnStartAuthority()
